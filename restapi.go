@@ -281,6 +281,20 @@ func (s *Session) User(userID string) (st *User, err error) {
 	return
 }
 
+// UserProfile returns user deails, mutual servers, and nitro details about a given userID
+// This endpoint is only available to user accounts and will return an error for bots
+// userID    : A user ID or "@me" which is a shortcut of current user ID
+func (s *Session) UserProfile(userID string) (st *UserProfile, err error) {
+
+	body, err := s.RequestWithBucketID("GET", EndpointUserProfile(userID), nil, EndpointUsers)
+	if err != nil {
+		return
+	}
+
+	err = unmarshal(body, &st)
+	return
+}
+
 // UserAvatar is deprecated. Please use UserAvatarDecode
 // userID    : A user ID or "@me" which is a shortcut of current user ID
 func (s *Session) UserAvatar(userID string) (img image.Image, err error) {

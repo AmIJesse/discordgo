@@ -445,6 +445,15 @@ type Guild struct {
 	SystemChannelID string `json:"system_channel_id"`
 }
 
+// MutualGuild stores an individuals mutual guilds from a users profile
+type MutualGuild struct {
+	// Mutual Guild ID
+	ID string `json:"id"`
+
+	// Users nickname in the guild
+	Nickname string `json:"nick"`
+}
+
 // A UserGuild holds a brief version of a Guild
 type UserGuild struct {
 	ID          string `json:"id"`

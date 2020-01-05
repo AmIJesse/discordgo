@@ -61,6 +61,7 @@ var (
 	EndpointIntegrations = EndpointAPI + "integrations"
 
 	EndpointUser               = func(uID string) string { return EndpointUsers + uID }
+	EndpointUserProfile        = func(uID string) string { return EndpointUsers + uID + "/profile" }
 	EndpointUserAvatar         = func(uID, aID string) string { return EndpointCDNAvatars + uID + "/" + aID + ".png" }
 	EndpointUserAvatarAnimated = func(uID, aID string) string { return EndpointCDNAvatars + uID + "/" + aID + ".gif" }
 	EndpointDefaultUserAvatar  = func(uDiscriminator string) string {

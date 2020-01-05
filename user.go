@@ -38,6 +38,24 @@ type User struct {
 	Bot bool `json:"bot"`
 }
 
+// UserProfile stores all data for an individual Discord users profile
+type UserProfile struct {
+	// User data
+	User User `json:"user"`
+
+	// Mutual guilds shared between signed in account and user
+	MutualGuilds []MutualGuild `json:"mutual_guilds"`
+
+	// Connected Accounts
+	Connections []UserConnection `json:"connected_accounts"`
+
+	// Timestamp of when user was first "nitro"
+	NitroSince Timestamp `json:"premium_since"`
+
+	// Timestamp of when user first boosted a server with nitro
+	BoostingServerSince Timestamp `json:"premium_guild_since"`
+}
+
 // String returns a unique identifier of the form username#discriminator
 func (u *User) String() string {
 	return u.Username + "#" + u.Discriminator
